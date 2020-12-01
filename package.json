@@ -1,5 +1,6 @@
 {
   "name": "buildingskins",
+  "developer": "Marcial Cabrera",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,0 +1,19 @@
+.Home {
+    background: url('../../assets/background.jpg');
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.Home p {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 55px;
+    color: white;
+    margin: 15px;
+}
+
+#Name {
+    margin-top: 60vh;
+}
