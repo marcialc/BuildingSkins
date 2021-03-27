@@ -1,19 +1,21 @@
 import React from 'react';
 
-import './NavBar.css';
+import './NavBar.scss';
 import logo from '../../../assets/white-logo.png';
 
 const NavBar = (props) => {
 
     return (
-        <div className="navbar">
-            <img className="navbar-logo" src={logo} />
-            <ul className="navbar-container">
-                <li className="a"><a href="/">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="/">Projects</a></li>
-                <li className="a"><a href="/">about us</a></li>
-                <li><a href="#services">contact</a></li>
+        <div className="nav-bar nav-bar-is-open">
+            <div className="leading-container">
+                <img alt="nav-bar-logo" className="navbar-logo" src={logo} />
+            </div>
+            <ul className="trailing-container">
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="/">Projects</a>
+                <a href="/">About us</a>
+                <a href="#services">Contact</a>
 
             </ul>
         </div>
