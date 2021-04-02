@@ -4,6 +4,8 @@ import './App.scss';
 import NavBar from './components/UI/NavBar/NavBar';
 import Home from './container/Home/Home';
 import Services from './container/Services/Services'
+import Projects from './container/Projects/Projects'
+
 
 let lastScrollTop = 0;
 
