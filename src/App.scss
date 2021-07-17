@@ -1,0 +1,19 @@
+@import './global-vars.scss';
+
+.App {
+  text-align: center;
+  color: #232B2B;
+  font-family: "Roboto", sans-serif;
+  overflow-y: auto;
+}
+
+.Roboto{font-family:'Roboto';font-weight:400;} /* 400 is industry standard for normal */
+
+.RobotoLight{font-family:'Roboto';font-weight:300;} /* 300 is industry standard for normal */
+
+.RobotoMedium{font-family:'Roboto';font-weight:500;} /* 500 is industry standard for normal */
+
+a {
+  text-decoration: none;
+  color: #232B2B;
+}
