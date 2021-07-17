@@ -19,18 +19,7 @@ class Contact extends Component {
 
     render() {
         return (
-            <div className="contact">
-                <div className="left-side">
-    
-                </div>
-                <div className="right-side">
-                    <input placeholder="name" type="text"></input>
-                    <input placeholder="email" type="text"></input>
-                    <div className="form-group">
-                        <textarea placeholder="message" className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
-                    </div>
-                </div>
-            </div>
+            <div></div>
         )
     }
 }
