@@ -4,7 +4,7 @@ import './App.scss';
 import NavBar from './components/UI/NavBar/NavBar';
 import Home from './container/Home/Home';
 import Services from './container/Services/Services';
-import Projects from './container/Projects/Projects';
+import About from './container/About/About';
 import Contact from './container/Contact/Contact';
 
 
@@ -37,6 +37,7 @@ class App extends Component {
         <NavBar />
         <Home />
         <Services />
+        <About />
         <Contact />
       </div>
     );
