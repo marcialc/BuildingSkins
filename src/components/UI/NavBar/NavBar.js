@@ -11,11 +11,10 @@ const NavBar = (props) => {
                 <img alt="nav-bar-logo" className="navbar-logo" src={logo} />
             </div>
             <ul className="trailing-container">
-                <a href="/">Home</a>
+                <a href="#home">Home</a>
                 <a href="#services">Services</a>
-                <a href="/">Projects</a>
-                <a href="/">About us</a>
-                <a href="#services">Contact</a>
+                <a href="#aboutus">About us</a>
+                <a href="#contact">Contact</a>
 
             </ul>
         </div>
