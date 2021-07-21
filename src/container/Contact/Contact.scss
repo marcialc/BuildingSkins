@@ -1,0 +1,93 @@
+@import "../../global-vars.scss";
+
+.contact-page-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background: $background-color;
+
+  .contact-left-side {
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+
+    .contact-us-title {
+      font-size: 32px;
+    }
+
+    .contact-info-item {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+
+      .contact-item-icon {
+        margin-right: 1rem;
+      }
+    }
+
+    .contact-divider {
+      width: 8px;
+      height: 100px;
+      background: white;
+      border-radius: 4px;
+    }
+
+    .contact-us {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-info {
+      flex-grow: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .contact-right-side {
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    display: flex;
+    flex-grow: 1;
+
+    .contact-card {
+      padding: 1rem 1rem;
+      width: 25vw;
+      height: 60vh;
+      box-sizing: border-box;
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .contact-button {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .contact-page-container {
+    flex-direction: column;
+
+    .contact-left-side .contact-info {
+      flex-grow: 1;
+      align-items: center;
+    }
+
+    .contact-right-side .contact-card {
+      width: 60vw;
+    }
+  }
+}

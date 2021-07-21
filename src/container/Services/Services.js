@@ -12,11 +12,6 @@ const Services = () => {
 
     const [services, setService] = useState(data.services.service);
 
-    useEffect(() => {
-        console.log(data.services.service)
-        setService(data.services.service);
-    })
-
     return (
         <div id="services" className="services">
             <p className="services-title">SERVICES</p>
@@ -24,11 +19,9 @@ const Services = () => {
                     {
                         services.map( service => {
 
-                            console.log(service)
-
                             return (
-                                <div className="service">
-                                    <img alt="engineerLogo" src={engineerLogo} />
+                                <div key={service.title} className="service">
+                                    <img alt={service.title} src={sketchLogo} />
                                     <div className="service-title">
                                         <h2>{service.title}</h2>
                                         <div className="bottom-border"><div></div></div>
@@ -42,6 +35,26 @@ const Services = () => {
             </div>
         </div>
     )
+}
+
+const getLogo = (iconNumber) => {
+
+    switch(iconNumber) {
+        case 1:
+            return engineerLogo;
+        case 2:
+            return windowLogo;
+        case 3:
+            return buildingLogo;
+        case 4: 
+            return sketchLogo;
+        case 5:
+            return buildingLogo;
+        default:
+            break;
+    }
+
+    return null;
 }
 
 export default Services;
