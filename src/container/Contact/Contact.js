@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, TextField } from '@material-ui/core';
 import { AccessAlarm } from '@material-ui/icons';
+import emailjs from 'emailjs-com';
 
 import './Contact.scss';
 
@@ -15,13 +16,20 @@ const ContactInfoItem = ({icon, text}) => {
 
 class Contact extends Component {
 
-    onMessageChange(event) {
-        this.setState({ message: event.target.value })
-    }
+    sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_b2lr9hc', 'building-skins-template', e.target, 'user_6MAns5L6mQSlH73j45VIu')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
 
     render() {
         return (
-            <div className="contact-page-container">
+            <div id="contact" className="contact-page-container">
                 <div className="contact-left-side">
                     <div className="contact-us">
                         <h2 className="contact-us-title">CONTACT US</h2>
@@ -35,17 +43,17 @@ class Contact extends Component {
                 </div>
                 <div className="contact-right-side">
                     <Card variant="outlined" className="contact-card">
-                        <form className="contact-form" autoComplete="off">
-                            <TextField id="outlined-basic" required fullWidth label="Email" variant="outlined" margin="normal" />
-                            <TextField id="outlined-basic" required fullWidth label="Name" variant="outlined" margin="normal" />
+                        <form className="contact-form" autoComplete="off" onSubmit={this.sendEmail}>
+                            <TextField id="outlined-basic" required fullWidth name="email" label="Email" variant="outlined" margin="normal" />
+                            <TextField id="outlined-basic" required fullWidth name="full_name" label="Full name" variant="outlined" margin="normal" />
                             <TextField
                                 id="outlined-multiline-static"
+                                name="message"
                                 required
                                 fullWidth
                                 label="Message"
                                 multiline
                                 rows={4}
-                                defaultValue="Default Value"
                                 variant="outlined"
                                 margin="normal"
                             />
