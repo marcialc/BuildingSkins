@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Button, Card, TextField } from '@material-ui/core';
 import { AccessAlarm } from '@material-ui/icons';
-import Axios from 'axios';
+import emailjs from 'emailjs-com';
+
+import phone from '../../assets/phone.svg';
+import mail from '../../assets/mail.svg';
 
 import './Contact.scss';
 
 const ContactInfoItem = ({icon, text}) => {
     return (
         <div className="contact-info-item">
-            <AccessAlarm className="contact-item-icon"></AccessAlarm>
+            <img className="contact-item-icon" src={icon} />
             <label>{text}</label>
         </div>
     )
@@ -16,20 +19,16 @@ const ContactInfoItem = ({icon, text}) => {
 
 class Contact extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            email: '',
-            message: '',
-            disabled: false,
-            emailSent: null,
-        }
-    }
-
-    onMessageChange(event) {
-        this.setState({ message: event.target.value })
-    }
+    sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_b2lr9hc', 'building-skins-template', e.target, 'user_6MAns5L6mQSlH73j45VIu')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
 
     handleChange = (event) => {
         const target = event.target;
@@ -41,63 +40,24 @@ class Contact extends Component {
         })
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-
-        this.setState({
-            disabled: true
-        });
-
-        // To run it locally
-        //Axios.post('http://localhost:5000/api/email', this.state)
-
-        //run it online 
-        // Axios.post('https://skillcourt-email.herokuapp.com/api/email', this.state)
-
-        Axios.post('http://localhost:8080/api/email', this.state)
-            .then(res => {
-                if(res.data.success) {
-                    this.setState({
-                        disabled: false,
-                        emailSent: true
-                    });
-                } else {
-                    this.setState({
-                        disabled: false,
-                        emailSent: false
-                    });
-                }
-            })
-            .catch(err => {
-                console.log(err);
-
-                this.setState({
-                    disabled: false,
-                    emailSent: false
-                });
-            })
-
-    }
-
     render() {
         return (
-            <div className="contact-page-container">
+            <div id="contact" className="contact-page-container">
                 <div className="contact-left-side">
                     <div className="contact-us">
                         <h2 className="contact-us-title">CONTACT US</h2>
                     </div>
                     <div className="contact-divider"></div>
                     <div className="contact-info">
-                        <ContactInfoItem icon="star" text="3054699001"></ContactInfoItem>
-                        <ContactInfoItem icon="star" text="Email@email.com"></ContactInfoItem>
-                        <ContactInfoItem icon="star" text="buildingskins.com"></ContactInfoItem>
+                        <ContactInfoItem icon={phone} text="3054699001"></ContactInfoItem>
+                        <ContactInfoItem icon={mail} text="rodrigo@buildingskins.us"></ContactInfoItem>
                     </div>
                 </div>
                 <div className="contact-right-side">
                     <Card variant="outlined" className="contact-card">
-                        <form onSubmit={this.handleSubmit} className="contact-form" autoComplete="off">
-                            <TextField onChange={this.handleChange} name="email" id="outlined-basic" required fullWidth label="Email" variant="outlined" margin="normal" />
-                            <TextField onChange={this.handleChange} name="name" id="outlined-basic" required fullWidth label="Name" variant="outlined" margin="normal" />
+                        <form className="contact-form" autoComplete="off" onSubmit={this.sendEmail}>
+                            <TextField id="outlined-basic" required fullWidth name="email" label="Email" variant="outlined" margin="normal" />
+                            <TextField id="outlined-basic" required fullWidth name="full_name" label="Full name" variant="outlined" margin="normal" />
                             <TextField
                                 onChange={this.handleChange}
                                 name="message"

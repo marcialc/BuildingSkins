@@ -1,8 +1,9 @@
 
 .about {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
+    flex-direction: column;
 
     .about-background {
         display: flex;
@@ -31,14 +32,64 @@
         
     }
 
+    .cont {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem;
+        color: white;
+
+        h2 {
+            margin: 2rem;
+            margin-top: 0;
+            flex:auto;
+        }
+
+        p {
+            flex: auto;
+            margin: 0 10rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+    }
+
+    .tit {
+        font-size: 2.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .image {
+        background: url('../../assets/engineerpromise.jpg');
+        background-size: cover;
+        color: white;
+    }
+
+    .white {
+        background: white;
+        color: black;
+    }
+    .blue {
+        background: #2a55a3;
+    }
+
     
 }
 
 
-.left-triangle {
-    width: 200px;
-    height: 200px;
-    border: 1px solid #fff;
-    left: -20vw;
-    transform: rotate(30deg);
+@media (max-width: 60em) {
+    .cont {
+        flex-wrap: wrap;
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 0 2rem !important;
+        }
+    }
 }
+

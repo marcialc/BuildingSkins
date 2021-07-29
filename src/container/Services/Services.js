@@ -1,61 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 
 import './Services.scss';
-import engineerLogo from '../../assets/engineering.svg';
-import windowLogo from '../../assets/window.svg';
-import buildingLogo from '../../assets/building.svg';
-import sketchLogo from '../../assets/sketch.svg'
+import product from '../../assets/product.svg';
+import engineer from '../../assets/engineer.svg';
+import design from '../../assets/design.svg';
+import analysis from '../../assets/analysis.svg';
+import drawings from '../../assets/drawings.svg';
 
 import data from '../../en';
 
-const Services = () => {
-
-    const [services, setService] = useState(data.services.service);
-
-    return (
-        <div id="services" className="services">
-            <p className="services-title">SERVICES</p>
-            <div className="services-container">
-                    {
-                        services.map( service => {
-
-                            return (
-                                <div key={service.title} className="service">
-                                    <img alt={service.title} src={sketchLogo} />
-                                    <div className="service-title">
-                                        <h2>{service.title}</h2>
-                                        <div className="bottom-border"><div></div></div>
-                                    </div>
-                                    <p>{service.description}</p>
-                                </div>
-                            )
-
-                        })
-                    }
-            </div>
-        </div>
-    )
-}
-
-const getLogo = (iconNumber) => {
-
-    switch(iconNumber) {
-        case 1:
-            return engineerLogo;
-        case 2:
-            return windowLogo;
-        case 3:
-            return buildingLogo;
-        case 4: 
-            return sketchLogo;
-        case 5:
-            return buildingLogo;
-        default:
-            break;
+class Services extends Component {
+    
+     getLogo = (iconNumber) => {
+        switch(iconNumber) {
+            case 1:
+                return design;
+            case 2:
+                return analysis;
+            case 3:
+                return product;
+            case 4: 
+                return engineer;
+            case 5:
+                return drawings;
+            default:
+                break;
+        }
     }
+    
 
-    return null;
+    render() {
+        return (
+            <div id="services" className="services">
+                <p className="services-title">SERVICES</p>
+                <div className="services-container">
+                        {
+                            data.services.service.map( service => {    
+                                return (
+                                    <div key={service.title} className="service">
+                                        <img alt={service.title} src={this.getLogo(service.icon)} />
+                                        <div className="service-title">
+                                            <h2>{service.title}</h2>
+                                            <div className="bottom-border"><div></div></div>
+                                        </div>
+                                        <p>{service.description}</p>
+                                    </div>
+                                )
+    
+                            })
+                        }
+                </div>
+            </div>
+        )
+    }
 }
+
 
 export default Services;
 
