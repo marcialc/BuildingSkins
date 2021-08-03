@@ -10,6 +10,7 @@ import Contact from './container/Contact/Contact';
 
 let lastScrollTop = 0;
 
+// App
 class App extends Component {
 
   componentDidMount() {
