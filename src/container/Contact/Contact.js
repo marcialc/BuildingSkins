@@ -3,12 +3,15 @@ import { Button, Card, TextField } from '@material-ui/core';
 import { AccessAlarm } from '@material-ui/icons';
 import emailjs from 'emailjs-com';
 
+import phone from '../../assets/phone.svg';
+import mail from '../../assets/mail.svg';
+
 import './Contact.scss';
 
 const ContactInfoItem = ({icon, text}) => {
     return (
         <div className="contact-info-item">
-            <AccessAlarm className="contact-item-icon"></AccessAlarm>
+            <img className="contact-item-icon" src={icon} />
             <label>{text}</label>
         </div>
     )
@@ -27,6 +30,16 @@ class Contact extends Component {
           });
       }
 
+    handleChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        })
+    }
+
     render() {
         return (
             <div id="contact" className="contact-page-container">
@@ -36,9 +49,8 @@ class Contact extends Component {
                     </div>
                     <div className="contact-divider"></div>
                     <div className="contact-info">
-                        <ContactInfoItem icon="star" text="3054699001"></ContactInfoItem>
-                        <ContactInfoItem icon="star" text="Email@email.com"></ContactInfoItem>
-                        <ContactInfoItem icon="star" text="buildingskins.com"></ContactInfoItem>
+                        <ContactInfoItem icon={phone} text="3054699001"></ContactInfoItem>
+                        <ContactInfoItem icon={mail} text="rodrigo@buildingskins.us"></ContactInfoItem>
                     </div>
                 </div>
                 <div className="contact-right-side">
@@ -47,8 +59,9 @@ class Contact extends Component {
                             <TextField id="outlined-basic" required fullWidth name="email" label="Email" variant="outlined" margin="normal" />
                             <TextField id="outlined-basic" required fullWidth name="full_name" label="Full name" variant="outlined" margin="normal" />
                             <TextField
-                                id="outlined-multiline-static"
+                                onChange={this.handleChange}
                                 name="message"
+                                id="outlined-multiline-static"
                                 required
                                 fullWidth
                                 label="Message"
